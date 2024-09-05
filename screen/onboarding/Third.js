@@ -26,7 +26,7 @@ const Third = ({ navigation }) => {
         <Icon name="circle-thin" color={"gold"} size={20} />
       </View>
 
-      <TouchableOpacity style={styles.but} onPress={() => navigation.navigate("Mike")}>
+      <TouchableOpacity style={styles.but} onPress={() => navigation.navigate("Reg")}>
         <Text style={{ textAlign: "center" }}>Get Started</Text>
       </TouchableOpacity>
     </View>
