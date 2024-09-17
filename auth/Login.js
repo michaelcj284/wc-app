@@ -11,6 +11,7 @@ import React, { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Splash from "../components/Splash";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,8 +19,13 @@ const Tab = createBottomTabNavigator();
 const Login = () => {
   const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showSplash, setShowSplash] = useState(true);
 
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+
+  if (showSplash) {
+    return <Splash onFinish={() => setShowSplash(false)} />;
+  }
 
   const handleLogin = async () => {
     try {
@@ -37,7 +43,7 @@ const Login = () => {
 
       if (user) {
         Alert.alert("Sign in successful!");
-        navigation.replace("MainTabs"); //Navigate to MainTabs after successfu login
+        navigation.replace("Todo"); //Navigate to MainTabs after successfu login
       } else {
         Alert.alert("Invalid credentials");
       }
